@@ -9,11 +9,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // 햄버거 메뉴 리스트
-        List<String> menuItems = new ArrayList<>();
-        menuItems.add("ShackBurger ($6.9) - 토마토, 양상추, 쉑소스가 토핑된 치즈버거");
-        menuItems.add("SmokeShack ($8.9) - 베이컨, 체리 페퍼, 쉑소스가 토핑된 치즈버거");
-        menuItems.add("Shroom Burger ($9.4) - 포토벨로 버섯 패티와 치즈가 들어간 버거");
+        // MenuItem 리스트 활용
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
+        menuItems.add(new MenuItem("SmokeShack", 8.9, "베이컨, 체리 페퍼, 쉑소스가 토핑된 치즈버거"));
+        menuItems.add(new MenuItem("Shroom Burger", 9.4, "포토벨로 버섯 패티와 치즈가 들어간 버거"));
 
         while (true) {
             System.out.println("=== 햄버거 메뉴 ===");
@@ -30,7 +30,7 @@ public class Main {
                     System.out.println("키오스크를 종료합니다.");
                     break;
                 } else if (choice >= 1 && choice <= menuItems.size()) {
-                    System.out.println("선택한 메뉴: " + menuItems.get(choice - 1));
+                    System.out.println("선택한 메뉴: " + menuItems.get(choice - 1).getName());
                 } else {
                     System.out.println("잘못된 입력입니다. 메뉴 번호를 확인하세요.");
                 }
