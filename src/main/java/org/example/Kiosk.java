@@ -77,11 +77,23 @@ public class Kiosk {
 
     private void displayOrderMenu() {
         cart.displayCart();
-        OutputHandler.printMessage("\n1. 주문  2. 메뉴판");
-        int choice = InputHandler.getIntInput("입력: ", 1, 2);
+        OutputHandler.printMessage("\n1. 주문  2.메뉴 취소  3. 메뉴판");
+        int choice = InputHandler.getIntInput("입력: ", 1, 3);
         if (choice == 1) {
+            displayDiscountInfo();
             OutputHandler.printMessage("주문이 완료되었습니다. 금액은 W " + cart.getTotal() + " 입니다.");
             cart.clearCart();
+            return;
         }
+        if (choice == 2){
+            int cancelChoice = InputHandler.getIntInput("취소하실 메뉴 번호를 입력해주세요: ", 1, cart.getTotalCount());
+            cart.removeItem(cancelChoice);
+        }
+    }
+
+    private void displayDiscountInfo() {
+        OutputHandler.printMessage(UserType.getDiscountInfo());
+        int choice = InputHandler.getIntInput("입력: ", 1,UserType.getTotalCount());
+        cart.discount(choice);
     }
 }
