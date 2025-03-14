@@ -19,7 +19,8 @@ public class Menu {
     }
 
     public List<MenuItem> getMenuItems() {
-        return menuItems;
+        //리스트 직접 수정 방지
+        return new ArrayList<>(menuItems);
     }
 
     public String getCategoryName() {
